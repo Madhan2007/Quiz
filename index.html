@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Oort - AI Quiz</title>
+</head>
+
+<body style="background-color: #0a0b1e; color: white; margin: 0; font-family: sans-serif;">
+  <div id="app">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+      <h1>Loading Neon Oort...</h1>
+      <p id="error-message" style="color: #ff3232; margin-top: 20px; font-size: 0.8rem; font-family: monospace;"></p>
+    </div>
+  </div>
+  <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+      document.getElementById('error-message').innerText = "JS Error: " + message;
+    };
+
+    setTimeout(() => {
+      const app = document.getElementById('app');
+      // If app still has 'Loading' text after 2 seconds, assume failure
+      if (app && app.innerText.includes('Loading Neon Oort')) {
+        document.getElementById('error-message').innerText = "Startup Timeout: ./main.js failed to load. Check console.";
+      }
+    }, 3000);
+  </script>
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
